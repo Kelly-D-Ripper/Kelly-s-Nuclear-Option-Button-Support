@@ -1,0 +1,11 @@
+bin/
+obj/
+release/
+*.user
+*.suo
+*.userprefs
+.vs/
+.idea/
+.vscode/
+*.log
+*.zip

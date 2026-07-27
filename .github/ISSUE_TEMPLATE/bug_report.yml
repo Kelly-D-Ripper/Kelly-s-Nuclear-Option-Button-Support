@@ -1,0 +1,53 @@
+name: Controller compatibility report
+description: Report a detection, mapping, or compatibility problem.
+title: "[Controller] "
+labels:
+  - bug
+body:
+  - type: input
+    id: controller
+    attributes:
+      label: Controller
+      description: Manufacturer and exact model.
+      placeholder: WinWing URSA Minor Combat Joystick R
+    validations:
+      required: true
+  - type: dropdown
+    id: mode
+    attributes:
+      label: Device mode
+      options:
+        - Native / single-device
+        - Split-device / 4x32
+        - Unsure
+    validations:
+      required: true
+  - type: input
+    id: game-version
+    attributes:
+      label: Nuclear Option version
+      placeholder: "0.34.0"
+    validations:
+      required: true
+  - type: input
+    id: plugin-version
+    attributes:
+      label: Plugin version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Include the expected result and the actual result.
+    validations:
+      required: true
+  - type: textarea
+    id: log
+    attributes:
+      label: Relevant log lines
+      description: Paste High Button Controller Fix lines from BepInEx/LogOutput.log.
+      render: text
+    validations:
+      required: true
