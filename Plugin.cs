@@ -16,7 +16,7 @@ namespace KellysKNOBS
     {
         public const string PluginGuid = "com.kellys.nuclearoption.knobs";
         public const string PluginName = "Kelly's KNOBS";
-        public const string PluginVersion = "1.0.0";
+        public const string PluginVersion = "1.0.1";
 
         private static readonly string[] GamepadNameMarkers =
         {
@@ -150,19 +150,33 @@ namespace KellysKNOBS
 
         private IEnumerator InitializeWhenReady()
         {
-            const float timeoutSeconds = 20f;
-            float deadline = Time.realtimeSinceStartup + timeoutSeconds;
+            const float warningSeconds = 20f;
+            float startedAt = Time.realtimeSinceStartup;
+            bool warningShown = false;
 
-            while (!ReInput.isReady && Time.realtimeSinceStartup < deadline)
-                yield return null;
-
-            if (!ReInput.isReady)
+            while (!ReInput.isReady)
             {
-                SetStatus(
-                    StatusKind.Error,
-                    "Controller fix: Rewired did not initialize; see BepInEx log.");
-                Logger.LogError("Rewired was not ready after " + timeoutSeconds + " seconds.");
-                yield break;
+                float elapsedSeconds = Time.realtimeSinceStartup - startedAt;
+                if (!warningShown && elapsedSeconds >= warningSeconds)
+                {
+                    warningShown = true;
+                    SetStatus(
+                        StatusKind.Warning,
+                        "Controller fix: Rewired is taking longer than expected; still waiting...");
+                    Logger.LogWarning(
+                        "Rewired was not ready after " + warningSeconds +
+                        " seconds; continuing to wait.");
+                }
+
+                yield return null;
+            }
+
+            if (warningShown)
+            {
+                float elapsedSeconds = Time.realtimeSinceStartup - startedAt;
+                Logger.LogInfo(
+                    "Rewired became ready after " + elapsedSeconds.ToString("0.0") +
+                    " seconds; continuing controller detection.");
             }
 
             ReInput.ControllerConnectedEvent += OnControllerChanged;

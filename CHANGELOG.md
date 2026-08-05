@@ -2,6 +2,21 @@
 
 All notable changes are documented here.
 
+## 1.0.1 - 2026-08-05
+
+### Fixed
+
+- Rewired initialization no longer fails permanently when a large Blueprinter
+  mod set delays the main menu beyond 20 seconds.
+- The startup status now warns after 20 seconds but continues waiting until
+  Rewired is genuinely ready, then resumes controller detection automatically.
+
+### Tested
+
+- Nuclear Option 0.34.1 with Blueprinter 1.8.21 and the full installed addon set.
+- WinWing URSA Minor Combat Joystick R: 144 buttons and 32 axes through RawInput.
+- Saitek X-55 Rhino Throttle: 43 buttons and 8 axes through RawInput.
+
 ## 1.0.0 - 2026-07-27
 
 First public release of **Kelly's KNOBS** — Kelly's Nuclear Option Button
