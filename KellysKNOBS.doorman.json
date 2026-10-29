@@ -1,0 +1,14 @@
+{
+  "plugin": "com.kellys.nuclearoption.knobs",
+  "name": "Kelly's KNOBS",
+  "author": "Brig. Gen. Kelly D. Ripper",
+  "description": "Detects flight controllers with more than 32 buttons, reports their real controller names, and helps identify truncated or split-device configurations.",
+  "links": [
+    { "label": "GitHub", "url": "https://github.com/Kelly-D-Ripper/Kelly-s-Nuclear-Option-Button-Support" },
+    { "label": "Discord", "url": "https://discord.gg/shipyard" }
+  ],
+  "update": {
+    "repository": "Kelly-D-Ripper/Kelly-s-Nuclear-Option-Button-Support",
+    "asset": "KellysKNOBS-*.zip"
+  }
+}
